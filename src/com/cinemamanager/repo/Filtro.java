@@ -1,5 +1,18 @@
 package com.cinemamanager.repo;
 
-public interface Filtro {
-
+public interface Filtro<T> {
+	
+	
+	boolean accetta(T elemento);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
