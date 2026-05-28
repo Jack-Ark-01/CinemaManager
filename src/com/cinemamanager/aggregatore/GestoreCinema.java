@@ -1,16 +1,14 @@
 package com.cinemamanager.aggregatore;
 
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.cinemamanager.models.Archivio;
-import com.cinemamanager.models.Film;
-import com.cinemamanager.models.GenereFilm;
-import com.cinemamanager.models.Proiezione;
-import com.cinemamanager.models.Sala;
+
+import com.cinemamanager.models.*;
 import com.cinemamanager.repo.Filtro;
 
 public class GestoreCinema {
@@ -155,10 +153,58 @@ public class GestoreCinema {
 	
 	
 	
+	void stampaDettaglioSpecifico(Proiezione proiezione) {
+		
+		if(proiezione instanceof ProiezioneStandard) {
+
+			System.out.println(					"Titolo: " 			+	proiezione.getFilm().getTitolo()
+								+	"\n"		+	"Sala: "				+	proiezione.getSala().getNome()
+								+	"\n"		+	"Data: "				+	proiezione.getData().toString()
+								+	"\n"		+	"Ora: "				+	proiezione.getOraInizio().toString()
+								+	"\n"		+	"Prezzo finale: "	+	((ProiezioneStandard) proiezione).calcolaPrezzoFinale()	+	"€"
+					);
+		}
+		else if(proiezione instanceof Proiezione3D) {
+
+			System.out.println(					"Titolo: " 			+	proiezione.getFilm().getTitolo()
+								+	"\n"		+	"Sala: "				+	proiezione.getSala().getNome()
+								+	"\n"		+	"Supplemento per "
+											+	"occhiali 3D: "		+	((Proiezione3D) proiezione).getSupplemento3D()
+								+	"\n"		+	"Occhiali "			+	(((Proiezione3D) proiezione).isOcchialiInclusi() ? "inclusi" : "non inclusi")
+								+	"\n"		+	"Prezzo finale: "	+	((Proiezione3D) proiezione).calcolaPrezzoFinale()	+	"€"
+								);
+		}
+		else if(proiezione instanceof EventoSpeciale) {
+			
+			EventoSpeciale evento = (EventoSpeciale) proiezione;
+			
+			System.out.println(					"Nome evento: " 		+	evento.getNomeEvento()
+								+	"\n"		+	"Ospite: "			+	evento.getOspite()
+								+	"\n"		+	"Posti "				+	(evento.isPostiLimitati() ? "limitati" : "illimitati")
+								+	"\n"		+	"Prezzo finale: "	+	evento.calcolaPrezzoFinale()	+	"€"
+								);
+		}
+	}
+	
+	
+	public void ordinaPerDataOra(){
+		this.programmazione.sort((p1, p2)
+				-> p1.getDataOraInizio().compareTo(p2.getDataOraInizio()));
+	}
 	
 	
 	
+	public void ordinaPerPrezzoFinaleCrescente(){
+		this.programmazione.sort((p1, p2)
+				-> Double.compare(p1.calcolaPrezzoFinale(), p2.calcolaPrezzoFinale())); 
+	}
 	
+	
+	List<Film> ordinaPerDurataDecrescente() {
+		List<Film> film = archivioFilm.trovaTutti();
+		film.sort((f1, f2) -> Integer.compare(f2.getDurataMinuti(), f1.getDurataMinuti()));
+		return film;
+	}
 	
 	
 	

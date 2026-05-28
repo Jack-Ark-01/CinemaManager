@@ -9,7 +9,7 @@ import com.cinemamanager.repo.Identificabile;
 
 public class Archivio<T extends Identificabile> {
 	
-	//proprietà??
+	//proprietà
 	private Map<Integer, T> elementi;
 	
 	//costruttore

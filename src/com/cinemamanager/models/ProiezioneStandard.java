@@ -25,9 +25,9 @@ public class ProiezioneStandard extends Proiezione{
 	@Override
 	public double calcolaPrezzoFinale() {
 		double prezzoFinale;
-		prezzoFinale= getPrezzoBase();
+		prezzoFinale = getPrezzoBase();
 		if(isNelWeekEnd()) prezzoFinale+=2.00;
-		if(isSerale()) prezzoFinale+=2.00;
+		if(isSerale()) prezzoFinale+=1.50;
 		return prezzoFinale;
 	}
 

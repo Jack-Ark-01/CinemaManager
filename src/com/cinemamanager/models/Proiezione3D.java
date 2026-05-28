@@ -17,7 +17,6 @@ public class Proiezione3D extends Proiezione{
 		super(id, sala, film, data, oraInizio, prezzobase, tag);
 		setSupplemento3D(prezzobase);
 		setOcchialiInclusi(occhialiInclusi);
-		
 	}
 	
 	@Override
