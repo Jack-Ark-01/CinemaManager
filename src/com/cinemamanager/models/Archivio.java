@@ -11,7 +11,7 @@ public class Archivio<T extends Identificabile> {
 	
 	//proprietà??
 	private Map<Integer, T> elementi;
-
+	
 	//costruttore
 	public Archivio()
 	{
@@ -65,6 +65,7 @@ public class Archivio<T extends Identificabile> {
 	{
 		return new ArrayList<>(elementi.values());
 	}
+	
 	
 	
 	public int contaElementi()

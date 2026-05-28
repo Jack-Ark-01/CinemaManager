@@ -47,19 +47,35 @@ public class GestoreCinema {
 	}
 	
 	
-	public List<Proiezione> filtraProiezione(Filtro filtro)
+	public List<Proiezione> filtraProiezioni(Filtro<Proiezione> filtro)
 	{
+		List<Proiezione> listaFiltrata = new ArrayList<>();
 		for(Proiezione p : programmazione)
 		{
+			if(filtro.accetta(p))
+			{
+				listaFiltrata.add(p);
+			}
 			
 		}
 		
-		
-		return null;
+		return listaFiltrata;
 	}
 	
 	
-	
+	public List<Film> filtraFilm(Filtro<Film> filtro)
+	{
+		List<Film> listaFiltrata = new ArrayList<>();
+		
+		for(Film f : archivioFilm.trovaTutti())
+		{
+			if(filtro.accetta(f))
+			{
+				listaFiltrata.add(f);
+			}
+		}
+		return listaFiltrata;
+	}
 	
 	
 	
