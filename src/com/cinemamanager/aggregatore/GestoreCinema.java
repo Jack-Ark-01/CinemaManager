@@ -11,6 +11,7 @@ import com.cinemamanager.models.Film;
 import com.cinemamanager.models.GenereFilm;
 import com.cinemamanager.models.Proiezione;
 import com.cinemamanager.models.Sala;
+import com.cinemamanager.repo.Filtro;
 
 public class GestoreCinema {
 	
@@ -44,5 +45,28 @@ public class GestoreCinema {
 			}
 		}
 	}
+	
+	
+	public List<Proiezione> filtraProiezione(Filtro filtro)
+	{
+		for(Proiezione p : programmazione)
+		{
+			
+		}
+		
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

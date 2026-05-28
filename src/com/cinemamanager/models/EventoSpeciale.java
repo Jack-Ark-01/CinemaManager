@@ -1,5 +1,62 @@
 package com.cinemamanager.models;
 
-public class EventoSpeciale {
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.Set;
+
+public class EventoSpeciale extends Proiezione{
+
+	public EventoSpeciale(int id, Sala sala, Film film, LocalDate data, LocalTime oraInizio, double prezzobase,
+			Set<String> tag) {
+		super(id, sala, film, data, oraInizio, prezzobase, tag);
+		
+	}
+
+	private String nomeEvento;
+	private String ospite;
+	private boolean postiLimitati;
+	
+	
+	@Override
+	public LocalDateTime getDataOraInizio() {
+		
+		return LocalDateTime.of(getData(), getOraInizio());
+	}
+
+	@Override
+	public double calcolaPrezzoFinale() {
+		double prezzoFinale;
+		prezzoFinale= getPrezzoBase()+5.00;
+		if(postiLimitati) prezzoFinale+=3.00;
+		if(isSerale()) prezzoFinale+=1.00;
+		return prezzoFinale;
+	}
+
+	public String getNomeEvento() {
+		return nomeEvento;
+	}
+
+	public void setNomeEvento(String nomeEvento) {
+		this.nomeEvento = nomeEvento;
+	}
+
+	public String getOspite() {
+		return ospite;
+	}
+
+	public void setOspite(String ospite) {
+		this.ospite = ospite;
+	}
+
+	public boolean isPostiLimitati() {
+		return postiLimitati;
+	}
+
+	public void setPostiLimitati(boolean postiLimitati) {
+		this.postiLimitati = postiLimitati;
+	}
+	
+	
 
 }

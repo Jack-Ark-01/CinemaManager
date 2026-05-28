@@ -6,9 +6,8 @@ import java.util.Set;
 
 import com.cinemamanager.repo.Identificabile;
 
-public class Film {
+public class Film implements Identificabile {
 
-	
 	
 //PROPRIETA'
 	private int id; 
@@ -18,11 +17,10 @@ public class Film {
 	private LocalDate dataUscita;
 	private Set<GenereFilm> generi;
 	
-
-	
 	
 //COSTRUTTORE
-	public Film() {
+	public Film()
+	{
 		
 	}
 
