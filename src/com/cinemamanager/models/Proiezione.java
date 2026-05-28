@@ -42,32 +42,32 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	    }
 	}
 	
-	void aggiungiTag(String tag) {
+	public void aggiungiTag(String tag) {
 		this.tag.add(tag);
 		
 	}
 	
-	boolean contieneTag(String tag) {
+	public boolean contieneTag(String tag) {
 		
 		return this.tag.contains(tag);
 	}
 
-	boolean isOggi() {
+	public boolean isOggi() {
 		LocalDate oggi = LocalDate.now();
 		return oggi.equals(data);
 	}
-	boolean isNelWeekEnd() {
+	public boolean isNelWeekEnd() {
 		return data.getDayOfWeek().equals(DayOfWeek.SATURDAY )||data.getDayOfWeek().equals(DayOfWeek.SUNDAY);
 	} 
 	
-	boolean isSerale() {
+	public boolean isSerale() {
 
 	    LocalTime sera = LocalTime.of(19, 30);
 	    return oraInizio.isAfter(sera);
 
 	}
 	
-	boolean isTerminata() {
+	public boolean isTerminata() {
 		
 	    LocalDateTime inizio = LocalDateTime.of(data, oraInizio);
 	    return inizio.isBefore(LocalDateTime.now());

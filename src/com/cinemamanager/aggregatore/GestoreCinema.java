@@ -47,7 +47,83 @@ public class GestoreCinema {
 	}
 	
 	
-	public List<Proiezione> filtraProiezioni(Filtro<Proiezione> filtro)
+	
+	public void aggiungereSala(Sala sala) {
+		if(sala != null)
+			archivioSale.aggiungi(sala);
+	}
+	
+	public void aggiungiProiezione(Proiezione proiezione) {
+		if(proiezione == null)
+			return;
+		
+		archivioProiezioni.aggiungi(proiezione);
+		programmazione.add(proiezione);
+		LocalDate dataProiezione = proiezione.getData();
+		proiezioniPerData.putIfAbsent(dataProiezione, new ArrayList<>());
+		proiezioniPerData.get(dataProiezione).add(proiezione);
+		
+		if(proiezione.getSala() != null) {
+			int idSala = proiezione.getSala().getId();
+			proiezioniPerSala.putIfAbsent(idSala, new ArrayList<>());
+			proiezioniPerSala.get(idSala).add(proiezione);
+		}
+	}
+	
+	public List<Proiezione> cercaProiezioniPerData(LocalDate data) {
+		if(proiezioniPerData.containsKey(data))
+			return proiezioniPerData.get(data);
+		else
+			return new ArrayList<>();
+	}
+	
+	public List<Proiezione> cercaProiezioniPerSala(int idSala) {
+		if(proiezioniPerSala.containsKey(idSala))
+			return proiezioniPerSala.get(idSala);
+		else
+			return new ArrayList<>();
+	}
+	
+	public List<Film> cercaFilmGenere(String genere) {
+		if(genere == null)
+			return new ArrayList<>();
+		if(filmPerGenere.containsKey(genere.toUpperCase()))
+			return filmPerGenere.get(genere);
+		else
+			return new ArrayList<>();
+	}
+	
+	public List<Proiezione> cercaProiezioniFutere(){
+		List<Proiezione> future = new ArrayList<>();
+		for(Proiezione p : programmazione) {
+			if(!p.isTerminata())
+				future.add(p);
+		}
+		return future;
+	}
+	
+	public List<Proiezione> cercaProiezioniDiOggi(){
+		List<Proiezione> diOggi = new ArrayList<>();
+		LocalDate oggi = LocalDate.now();
+		for(Proiezione p : programmazione) {
+			if(p.getData().equals(oggi))
+				diOggi.add(p);
+		}
+		return diOggi;
+	}
+
+	
+	public List<Proiezione> cercaProiezioniSerali(){
+		List<Proiezione> serali = new ArrayList<>();
+		for(Proiezione p : programmazione) {
+			if(p.isSerale())
+				serali.add(p);
+		}
+		return serali;
+	}
+	
+	
+	public List<Proiezione> filtraProiezione(Filtro<Proiezione> filtro)
 	{
 		List<Proiezione> listaFiltrata = new ArrayList<>();
 		for(Proiezione p : programmazione)
@@ -76,6 +152,7 @@ public class GestoreCinema {
 		}
 		return listaFiltrata;
 	}
+	
 	
 	
 	
