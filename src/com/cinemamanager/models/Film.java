@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.util.Set;
 
+import com.cinemamanager.repo.Identificabile;
+
 public class Film {
 
 	
