@@ -25,8 +25,8 @@ public class EventoSpeciale extends Proiezione{
 
 
 	//COSTRUTTORE PER LETTURA FILE
-	public EventoSpeciale(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, String nomeEvento, String ospite, boolean postiLimitati, Set<String> tag) {
-		super(idProiezione, idFilm, idSala, data, oraInizio, prezzobase, tag);
+	public EventoSpeciale(int idProiezione, Film film, Sala sala, LocalDate data, LocalTime oraInizio, double prezzobase, String nomeEvento, String ospite, boolean postiLimitati, Set<String> tag) {
+		super(idProiezione, film, sala, data, oraInizio, prezzobase, tag);
 		setNomeEvento(nomeEvento);
 		setOspite(ospite);
 		setPostiLimitati(postiLimitati);
@@ -72,6 +72,19 @@ public class EventoSpeciale extends Proiezione{
 		this.postiLimitati = postiLimitati;
 	}
 	
-	
+	@Override
+	public String getTipoProiezione() {
+		return "Evento speciale";
+	}
 
+
+	
+//TO STRING
+	@Override
+	public String toString() {
+		return getTipoProiezione() + "\n" + super.toString() + 	", nome evento: " + nomeEvento +
+																", ospite: " + ospite +
+																", posti: " + ((postiLimitati) ? "limitati" : "illimitati")
+																+ "] ";
+	}
 }

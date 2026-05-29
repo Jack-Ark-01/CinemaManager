@@ -106,9 +106,14 @@ public class Film implements Identificabile {
 //METODI
 	
 	//TO STRING
-	public String getDescrizione() {
-		return "Film [id: " + id + ", titolo: " + titolo + ", regista: " + regista + ", durataMinuti: " + durataMinuti
-				+ ", dataUscita: " + dataUscita + ", generi: " + generi + "] ";
+	@Override
+	public String toString() {
+		return "Film [id: " + id +
+				", titolo: " + titolo +
+				", regista: " + regista +
+				", durataMinuti: " + durataMinuti
+				+ ", dataUscita: " + dataUscita +
+				", generi: " + generi + "] ";
 	}
 	
 	

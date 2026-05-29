@@ -14,6 +14,7 @@ import com.cinemamanager.models.GenereFilm;
 import com.cinemamanager.models.Proiezione;
 import com.cinemamanager.models.Proiezione3D;
 import com.cinemamanager.models.ProiezioneStandard;
+import com.cinemamanager.models.Sala;
 
 public class Factory {
 	
@@ -56,14 +57,7 @@ public class Factory {
 	   List<String[]> lista = LettoreDatiCinema.leggiFile(percorso);
 		
 		List<Proiezione> listaProiezioni = new ArrayList<>();
-		
-//		private int id;
-//		private Film film;
-//		private Sala sala;
-//		private LocalDate data;
-//		private LocalTime oraInizio;
-//		private double prezzoBase;
-//		private Set<String> tag;
+
 		
 		for(String[] riga : lista) {
 			switch(riga[1].toUpperCase()) {
@@ -74,9 +68,17 @@ public class Factory {
 						s.add(valore);
 					}
 					
+					Film film = new Film();
+					
+					film.setId(Integer.parseInt(riga[2]));
+					
+					Sala sala = new Sala();
+					
+					sala.setId(Integer.parseInt(riga[3]));
+					
 					ProiezioneStandard p = new ProiezioneStandard(	Integer.parseInt(riga[0]),
-																	Integer.parseInt(riga[2]),
-																	Integer.parseInt(riga[3]),
+																	film,
+																	sala,
 																	LocalDate.parse(riga[4]),
 																	LocalTime.parse(riga[5]),
 																	Double.parseDouble(riga[6]), //riga 7, 8, 9 non sono attributi di proiezione standard
@@ -93,9 +95,17 @@ public class Factory {
 						s1.add(valore);
 					}
 					
-					Proiezione3D p3D = new Proiezione3D(			Integer.parseInt(riga[0]),
-																	Integer.parseInt(riga[2]),
-																	Integer.parseInt(riga[3]),
+					Film film1 = new Film();
+					
+					film1.setId(Integer.parseInt(riga[2]));
+					
+					Sala sala1 = new Sala();
+					
+					sala1.setId(Integer.parseInt(riga[3]));
+					
+					Proiezione3D p3D = new Proiezione3D(				Integer.parseInt(riga[0]),
+																	film1,
+																	sala1,
 																	LocalDate.parse(riga[4]),
 																	LocalTime.parse(riga[5]),
 																	Double.parseDouble(riga[6]),
@@ -114,10 +124,18 @@ public class Factory {
 					for(String valore : riga[10].split(",")) {
 						s2.add(valore);
 					}
+
+					Film film2 = new Film();
+					
+					film2.setId(Integer.parseInt(riga[2]));
+					
+					Sala sala2 = new Sala();
+					
+					sala2.setId(Integer.parseInt(riga[3]));
 					
 					EventoSpeciale es = new EventoSpeciale(			Integer.parseInt(riga[0]),
-																	Integer.parseInt(riga[2]),
-																	Integer.parseInt(riga[3]),
+																	film2,
+																	sala2,
 																	LocalDate.parse(riga[4]),
 																	LocalTime.parse(riga[5]),
 																	Double.parseDouble(riga[6]),

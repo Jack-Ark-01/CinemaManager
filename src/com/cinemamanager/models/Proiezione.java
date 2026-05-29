@@ -43,10 +43,10 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	}
 	
 	//COSTRUTTORE PER LETTURA FILE
-	public Proiezione(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, Set<String> tag) {
+	public Proiezione(int idProiezione, Film film, Sala Sala, LocalDate data, LocalTime oraInizio, double prezzobase, Set<String> tag) {
 		setId(idProiezione);
-		this.film.setId(idFilm);
-		this.sala.setId(idSala);
+		setFilm(film);
+	    setSala(sala);
 		setData(data);
 	    setOraInizio(oraInizio);
 	    
@@ -162,8 +162,18 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	public String getTipoProiezione() {
 		return "proiezione standard";
 	}
+
 	
 	
-	
-	
+//TO STRING
+	@Override
+	public String toString() {
+		return "[ id: " + id +
+				", film: " + film +
+				", sala: " + sala +
+				", data: " + data +
+				", ora di inizio: " + oraInizio +
+				", prezzo base: " + prezzoBase + "€" +
+				", tag: " + tag;
+	}
 }

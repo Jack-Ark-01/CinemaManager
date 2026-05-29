@@ -1,0 +1,5 @@
+4326;RichardMille;Carlo Franchi;126;2016-08-14;AZIONE
+1867;Consulenza in vacanza;Sandro Liberi;89;2021-09-06;COMMEDIA
+2982;A man without the soul;Saadh Okongu;186;2025-10-02;DRAMMATICO,THRILLER
+7465;Hero;Scarlett Dyandou;124;2022-07-26;ANIMAZIONE,FANTASCIENZA
+3781;Jarvan "Il ritorno";Oriundo Larson;220;2025-02-14;HORROR

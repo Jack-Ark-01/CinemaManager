@@ -3,7 +3,6 @@ package com.cinemamanager.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.HashSet;
 import java.util.Set;
 
 public class ProiezioneStandard extends Proiezione{
@@ -13,12 +12,6 @@ public class ProiezioneStandard extends Proiezione{
 		super(id, sala, film, data, oraInizio, prezzobase, tag);
 		
 	}
-	
-	//COSTRUTTORE PER LETTURA FILE
-	public ProiezioneStandard(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, Set<String> tag) {
-		super(idProiezione, idFilm, idSala, data, oraInizio, prezzobase, tag);
-	}
-	
 	
 	
 	
@@ -41,10 +34,19 @@ public class ProiezioneStandard extends Proiezione{
 
 	@Override
 	public String getTipoProiezione() {
-		return "proiezione standard";
+		return "Proiezione standard";
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return 			getTipoProiezione() +
+				"\n" + 	super.toString()
+						+ "] ";
 	}
 	
 	
-
-
+	
 }

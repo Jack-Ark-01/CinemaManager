@@ -20,8 +20,8 @@ public class Proiezione3D extends Proiezione{
 	}
 	
 	//COSTRUTTORE PER LETTURA FILE
-	public Proiezione3D(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, double supplemento3D, boolean occhialiInclusi, Set<String> tag) {
-		super(idProiezione, idFilm, idSala, data, oraInizio, prezzobase, tag);
+	public Proiezione3D(int idProiezione, Film film, Sala sala, LocalDate data, LocalTime oraInizio, double prezzobase, double supplemento3D, boolean occhialiInclusi, Set<String> tag) {
+		super(idProiezione, film, sala, data, oraInizio, prezzobase, tag);
 		setSupplemento3D(prezzobase);
 		setOcchialiInclusi(occhialiInclusi);
 	}
@@ -66,6 +66,18 @@ public class Proiezione3D extends Proiezione{
 	}
 	@Override
 	public String getTipoProiezione() {
-		return "proiezione 3d";
+		return "Proiezione 3d";
+	}
+
+	
+		
+//TO STRING
+	@Override
+	public String toString() {
+		return 			getTipoProiezione()
+			+ "\n" + 	super.toString() +
+						", supplemento 3D: " + supplemento3D + "€" +
+						", occhiali " + ((occhialiInclusi) ? "inclusi" : "non inclusi")
+						+ "] ";
 	}
 }
