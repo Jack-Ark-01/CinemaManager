@@ -42,6 +42,26 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	    }
 	}
 	
+	//COSTRUTTORE PER LETTURA FILE
+	public Proiezione(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, Set<String> tag) {
+		setId(idProiezione);
+		this.film.setId(idFilm);
+		this.sala.setId(idSala);
+		setData(data);
+	    setOraInizio(oraInizio);
+	    
+	    if (tag != null) {
+
+	        setTag(tag);
+
+	    } else {
+
+	    	this.tag= new HashSet<String>();
+
+	    }
+	   
+	}
+	
 	public void aggiungiTag(String tag) {
 		this.tag.add(tag);
 		

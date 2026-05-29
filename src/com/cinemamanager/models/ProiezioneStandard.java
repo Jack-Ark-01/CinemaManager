@@ -3,15 +3,22 @@ package com.cinemamanager.models;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.HashSet;
 import java.util.Set;
 
 public class ProiezioneStandard extends Proiezione{
 
-	public ProiezioneStandard(int id, Sala sala, Film film, LocalDate data, LocalTime oraInizio, double prezzobase,
+	public ProiezioneStandard(int id, Film film, Sala sala, LocalDate data, LocalTime oraInizio, double prezzobase,
 			Set<String> tag) {
 		super(id, sala, film, data, oraInizio, prezzobase, tag);
 		
 	}
+	
+	//COSTRUTTORE PER LETTURA FILE
+	public ProiezioneStandard(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, Set<String> tag) {
+		super(idProiezione, idFilm, idSala, data, oraInizio, prezzobase, tag);
+	}
+	
 	
 	
 	

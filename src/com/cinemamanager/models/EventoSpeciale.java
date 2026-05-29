@@ -5,17 +5,32 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
 
-public class EventoSpeciale extends Proiezione{
-
-	public EventoSpeciale(int id, Sala sala, Film film, LocalDate data, LocalTime oraInizio, double prezzobase,
-			Set<String> tag) {
-		super(id, sala, film, data, oraInizio, prezzobase, tag);
-		
-	}
+public class EventoSpeciale extends Proiezione{		
 
 	private String nomeEvento;
 	private String ospite;
 	private boolean postiLimitati;
+	
+	
+	
+	public EventoSpeciale(int id, Sala sala, Film film, LocalDate data, LocalTime oraInizio, double prezzobase,
+			              Set<String> tag, String nomeEvento, String ospite, boolean postiLimitati) {
+		
+		super(id, sala, film, data, oraInizio, prezzobase, tag);
+		
+		setNomeEvento(nomeEvento);
+		setOspite(ospite);
+		setPostiLimitati(postiLimitati);
+	}
+
+
+	//COSTRUTTORE PER LETTURA FILE
+	public EventoSpeciale(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, String nomeEvento, String ospite, boolean postiLimitati, Set<String> tag) {
+		super(idProiezione, idFilm, idSala, data, oraInizio, prezzobase, tag);
+		setNomeEvento(nomeEvento);
+		setOspite(ospite);
+		setPostiLimitati(postiLimitati);
+	}
 	
 	
 	@Override

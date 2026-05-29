@@ -19,6 +19,13 @@ public class Proiezione3D extends Proiezione{
 		setOcchialiInclusi(occhialiInclusi);
 	}
 	
+	//COSTRUTTORE PER LETTURA FILE
+	public Proiezione3D(int idProiezione, int idFilm, int idSala, LocalDate data, LocalTime oraInizio, double prezzobase, double supplemento3D, boolean occhialiInclusi, Set<String> tag) {
+		super(idProiezione, idFilm, idSala, data, oraInizio, prezzobase, tag);
+		setSupplemento3D(prezzobase);
+		setOcchialiInclusi(occhialiInclusi);
+	}
+	
 	@Override
 	public LocalDateTime getDataOraInizio() {
 		return null;
