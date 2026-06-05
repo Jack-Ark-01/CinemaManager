@@ -14,7 +14,7 @@ import com.cinemamanager.repo.Programmabile;
 
 
 
-public abstract class Proiezione implements Identificabile,Programmabile,Prezzabile{
+public abstract class Proiezione implements Identificabile, Programmabile, Prezzabile{
 
 	private int id;
 	private Film film;
@@ -29,6 +29,7 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	    setFilm(film);
 	    setSala(sala);
 	    setData(data);
+	    setPrezzoBase(prezzobase);
 	    setOraInizio(oraInizio);
 	    
 	    if (tag != null) {
@@ -48,6 +49,7 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 		setFilm(film);
 	    setSala(sala);
 		setData(data);
+		setPrezzoBase(prezzobase);
 	    setOraInizio(oraInizio);
 	    
 	    if (tag != null) {
@@ -59,7 +61,6 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	    	this.tag= new HashSet<String>();
 
 	    }
-	   
 	}
 	
 	public void aggiungiTag(String tag) {
@@ -82,7 +83,7 @@ public abstract class Proiezione implements Identificabile,Programmabile,Prezzab
 	
 	public boolean isSerale() {
 
-	    LocalTime sera = LocalTime.of(19, 30);
+	    LocalTime sera = LocalTime.of(20, 00);
 	    return oraInizio.isAfter(sera);
 
 	}

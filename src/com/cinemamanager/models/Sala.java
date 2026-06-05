@@ -95,9 +95,4 @@ public class Sala implements Identificabile{
 				"\nSupporto 3D: " + supporta3D +
 				"\nCaratteristiche: " + caratteristiche;			
 	}
-	
-	
-	
-	
-
 }

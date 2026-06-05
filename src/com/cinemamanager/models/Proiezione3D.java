@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Set;
 
-public class Proiezione3D extends Proiezione{
+public class Proiezione3D extends Proiezione {
 	
 	
 	private double supplemento3D;
@@ -28,7 +28,7 @@ public class Proiezione3D extends Proiezione{
 	
 	@Override
 	public LocalDateTime getDataOraInizio() {
-		return null;
+		return LocalDateTime.of(getData(), getOraInizio());
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class Proiezione3D extends Proiezione{
 		
 		double prezzoFinale;
 		
-		if(contieneTag("3d")) {
-			prezzoFinale= getPrezzoBase()+supplemento3D;//suppleento 3d
+		if(contieneTag("TRE_D")) {
+			prezzoFinale = getPrezzoBase()+supplemento3D;//suppleento 3d
 			if(isNelWeekEnd()) prezzoFinale+=2.00;
 			if (occhialiInclusi)prezzoFinale+=1.00;
 			return prezzoFinale;

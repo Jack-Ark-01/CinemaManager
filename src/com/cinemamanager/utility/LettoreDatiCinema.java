@@ -2,19 +2,9 @@ package com.cinemamanager.utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
-
-import com.cinemamanager.aggregatore.GestoreCinema;
-import com.cinemamanager.models.Film;
-import com.cinemamanager.models.GenereFilm;
-import com.cinemamanager.models.Sala;
 
 public class LettoreDatiCinema {
 
@@ -38,33 +28,5 @@ public class LettoreDatiCinema {
 		   }
 		   f.close();
 		   return lista;
-	} //legge film.txt 
-	
-	
-	
-	public static  Map<Integer,Sala> leggiFileSale() {
-		
-		
-		try {
-			File file = new File("/CinemaManager/come.cinemamanager.fileditesto/saleTest.txt");
-			Scanner fileScanner = new Scanner(file);
-			Map<Integer, Sala> mappa = new HashMap<Integer, Sala>();
-			while(fileScanner.hasNextLine()) {
-				
-				String[] riga= fileScanner.nextLine().split(",");
-				mappa.put(Integer.parseInt(riga[0]),new Sala());
-			}
-			
-			return mappa;
-		} catch (Exception e) {
-			
-			System.out.println("errore nella lettura del file ");
-			return null;
-		}
-
-	
-	
-	}
-	
-	
+	} //legge file
 }

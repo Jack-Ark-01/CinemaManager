@@ -5,6 +5,7 @@ import java.time.Period;
 import java.util.Set;
 
 import com.cinemamanager.repo.Identificabile;
+import com.cinemamanager.utility.ValidatoreCinema;
 
 public class Film implements Identificabile {
 
@@ -27,12 +28,7 @@ public class Film implements Identificabile {
 
 	public Film(int id, String titolo, String regista, int durataMinuti, LocalDate dataUscita, Set<GenereFilm> generi) {
 		super();
-		this.id = id;
-		this.titolo = titolo;
-		this.regista = regista;
-		this.durataMinuti = durataMinuti;
-		this.dataUscita = dataUscita;
-		this.generi = generi;
+		ValidatoreCinema.validaFilm(new Film(id, titolo, regista, durataMinuti, dataUscita, generi));
 	}
 
 	

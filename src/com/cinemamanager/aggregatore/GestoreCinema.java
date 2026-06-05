@@ -13,6 +13,12 @@ import com.cinemamanager.repo.Filtro;
 
 public class GestoreCinema {
 	
+//SINGLETON
+	private static final GestoreCinema GESTORE = 
+			new GestoreCinema();
+	
+	
+//PROPRIETA'
 	private Archivio<Film> archivioFilm;
 	private Archivio<Sala> archivioSale;
 	private Archivio<Proiezione> archivioProiezioni;
@@ -21,7 +27,9 @@ public class GestoreCinema {
 	private Map<Integer, List<Proiezione>> proiezioniPerSala;
 	private Map<String, List<Film>> filmPerGenere;
 	
-	public GestoreCinema() {
+	
+//COSTRUTTORE
+	private GestoreCinema() {
 		this.archivioFilm = new Archivio<>();
 		this.archivioSale = new Archivio<>();
 		this.archivioProiezioni = new Archivio<>();
@@ -31,6 +39,96 @@ public class GestoreCinema {
 		this.filmPerGenere = new HashMap<>();
 	}
 	
+	
+//GETTERS E SETTERS
+	public static GestoreCinema getGestore() {
+		return GESTORE;
+	}
+	
+	public Archivio<Film> getArchivioFilm() {
+		return archivioFilm;
+	}
+
+
+
+	public void setArchivioFilm(Archivio<Film> archivioFilm) {
+		this.archivioFilm = archivioFilm;
+	}
+
+
+
+	public Archivio<Sala> getArchivioSale() {
+		return archivioSale;
+	}
+
+
+
+	public void setArchivioSale(Archivio<Sala> archivioSale) {
+		this.archivioSale = archivioSale;
+	}
+
+
+
+	public Archivio<Proiezione> getArchivioProiezioni() {
+		return archivioProiezioni;
+	}
+
+
+
+	public void setArchivioProiezioni(Archivio<Proiezione> archivioProiezioni) {
+		this.archivioProiezioni = archivioProiezioni;
+	}
+
+
+
+	public List<Proiezione> getProgrammazione() {
+		return programmazione;
+	}
+
+
+
+	public void setProgrammazione(List<Proiezione> programmazione) {
+		this.programmazione = programmazione;
+	}
+
+
+
+	public Map<LocalDate, List<Proiezione>> getProiezioniPerData() {
+		return proiezioniPerData;
+	}
+
+
+
+	public void setProiezioniPerData(Map<LocalDate, List<Proiezione>> proiezioniPerData) {
+		this.proiezioniPerData = proiezioniPerData;
+	}
+
+
+
+	public Map<Integer, List<Proiezione>> getProiezioniPerSala() {
+		return proiezioniPerSala;
+	}
+
+
+
+	public void setProiezioniPerSala(Map<Integer, List<Proiezione>> proiezioniPerSala) {
+		this.proiezioniPerSala = proiezioniPerSala;
+	}
+
+
+
+	public Map<String, List<Film>> getFilmPerGenere() {
+		return filmPerGenere;
+	}
+
+
+
+	public void setFilmPerGenere(Map<String, List<Film>> filmPerGenere) {
+		this.filmPerGenere = filmPerGenere;
+	}
+
+
+//METODI
 	public void aggiungiFilm(Film film) {
 		if(film == null)
 			return;
@@ -153,7 +251,7 @@ public class GestoreCinema {
 	
 	
 	
-	void stampaDettaglioSpecifico(Proiezione proiezione) {
+	public void stampaDettaglioSpecifico(Proiezione proiezione) {
 		
 		if(proiezione instanceof ProiezioneStandard) {
 
@@ -165,6 +263,10 @@ public class GestoreCinema {
 					);
 		}
 		else if(proiezione instanceof Proiezione3D) {
+			
+			if(proiezione.getSala() == null) {
+				return;
+			}
 
 			System.out.println(					"Titolo: " 			+	proiezione.getFilm().getTitolo()
 								+	"\n"		+	"Sala: "				+	proiezione.getSala().getNome()

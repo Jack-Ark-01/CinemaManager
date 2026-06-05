@@ -54,7 +54,7 @@ public class Factory {
    
    public static List<Proiezione> creaProiezione(String percorso) throws FileNotFoundException{
 	   
-	   List<String[]> lista = LettoreDatiCinema.leggiFile(percorso);
+	   	List<String[]> lista = LettoreDatiCinema.leggiFile(percorso);
 		
 		List<Proiezione> listaProiezioni = new ArrayList<>();
 
@@ -154,4 +154,33 @@ public class Factory {
    }
 
 
+   public static List<Sala> creaSala(String percorso) throws FileNotFoundException {
+		
+		List<String[]> lista = LettoreDatiCinema.leggiFile(percorso);
+		
+		List<Sala> listaSale = new ArrayList<>();
+		
+		for(String[] riga : lista) {
+			
+			Sala salaTemp = new Sala();
+			
+			Set<String> setStringheCaratteristiche = new HashSet<>();
+		
+			String[] stringheCaratteristiche = riga[4].split(",");
+			
+			for(int i = 0; i < stringheCaratteristiche.length; i++) {
+				setStringheCaratteristiche.add(stringheCaratteristiche[i]);
+			}
+			
+			salaTemp.setId(Integer.parseInt(riga[0]));
+			salaTemp.setNome(riga[1]);
+			salaTemp.setNumeroPosti(Integer.parseInt(riga[2]));
+			salaTemp.setSupporta3D(Boolean.parseBoolean(riga[3]));
+			salaTemp.setCaratteristiche(setStringheCaratteristiche);
+			
+			listaSale.add(salaTemp);
+		}
+		
+		return listaSale;	
+	}
 }

@@ -7,18 +7,16 @@ import java.util.Set;
 
 public class ProiezioneStandard extends Proiezione{
 
+//COSTRUTTORE
 	public ProiezioneStandard(int id, Film film, Sala sala, LocalDate data, LocalTime oraInizio, double prezzobase,
 			Set<String> tag) {
 		super(id, sala, film, data, oraInizio, prezzobase, tag);
-		
 	}
 	
 	
-	
-	
+//METODI
 	@Override
 	public LocalDateTime getDataOraInizio() {
-		
 		return LocalDateTime.of(getData(), getOraInizio());
 	}
 
